@@ -16,25 +16,25 @@
 
       <!-- Row 2 -->
       <div class="btn-row">
-        <button @click="appendDigit('9')">9</button>
-        <button @click="appendDigit('8')">8</button>
         <button @click="appendDigit('7')">7</button>
+        <button @click="appendDigit('8')">8</button>
+        <button @click="appendDigit('9')">9</button>
         <button @click="appendOperator('*')" class="operator">×</button>
       </div>
 
       <!-- Row 3 -->
       <div class="btn-row">
-        <button @click="appendDigit('6')">6</button>
-        <button @click="appendDigit('5')">5</button>
         <button @click="appendDigit('4')">4</button>
+        <button @click="appendDigit('5')">5</button>
+        <button @click="appendDigit('6')">6</button>
         <button @click="appendOperator('-')" class="operator">−</button>
       </div>
 
       <!-- Row 4 -->
       <div class="btn-row">
-        <button @click="appendDigit('3')">3</button>
-        <button @click="appendDigit('2')">2</button>
         <button @click="appendDigit('1')">1</button>
+        <button @click="appendDigit('2')">2</button>
+        <button @click="appendDigit('3')">3</button>
         <button @click="appendOperator('+')" class="operator">+</button>
       </div>
 
