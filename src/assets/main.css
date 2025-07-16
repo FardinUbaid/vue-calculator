@@ -1,11 +1,9 @@
-/* Global App styles */
 .app {
   min-height: 100vh;
   color: #fff;
   transition: all 0.3s ease;
 }
 
-/* NavBar styles */
 .nav {
   display: flex;
   justify-content: center;
@@ -24,7 +22,6 @@
   color: white;
 }
 
-/* CalculatorView styles */
 .calculator {
   max-width: 400px;
   margin: 2rem auto;
@@ -130,7 +127,6 @@ button.zero {
   flex: 1;
 }
 
-/* HistoryView styles */
 .history-view {
   max-width: 500px;
   margin: 2rem auto;
@@ -165,7 +161,6 @@ button.zero {
   background: #e53935;
 }
 
-/* SettingsView styles */
 .settings-view {
   max-width: 500px;
   margin: 2rem auto;
