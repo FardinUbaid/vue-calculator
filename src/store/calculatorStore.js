@@ -1,30 +1,28 @@
 import { defineStore } from "pinia";
 
-export const useCalculatorStore = defineStore("calculatorStore", {
+export const useCalculatorStore = defineStore("calculator", {
   state: () => ({
     currentInput: "",
     result: "",
+    history: [],
   }),
-  getters: {
-    display() {
-      return this.result || this.currentInput || "0";
-    },
-  },
   actions: {
-    append(char) {
-      this.currentInput += char;
+    append(value) {
+      this.currentInput += value;
     },
     clear() {
       this.currentInput = "";
-      this.result = "";
     },
     calculate() {
       try {
         this.result = eval(this.currentInput).toString();
-        this.currentInput = "";
-      } catch (e) {
+        this.history.unshift(`${this.currentInput} = ${this.result}`);
+      } catch (err) {
         this.result = "Error";
       }
+    },
+    clearHistory() {
+      this.history = [];
     },
   },
 });

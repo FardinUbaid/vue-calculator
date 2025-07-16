@@ -1,11 +1,12 @@
 <template>
-  <div :class="['app', currentTheme]">
+  <div class="app" :style="{ fontSize: fontSize, backgroundColor: bgColor }">
     <NavBar />
     <router-view />
   </div>
 </template>
 
 <script>
+import { computed } from "vue";
 import NavBar from "./components/NavBar.vue";
 import { useSettingsStore } from "./store/settingsStore";
 
@@ -16,8 +17,13 @@ export default {
   },
   setup() {
     const settings = useSettingsStore();
+
+    const fontSize = computed(() => settings.currentFontSize);
+    const bgColor = computed(() => settings.currentColor);
+
     return {
-      currentTheme: settings.currentTheme,
+      fontSize,
+      bgColor,
     };
   },
 };
@@ -26,7 +32,6 @@ export default {
 <style>
 .app {
   min-height: 100vh;
-  background-color: #1e1e2f;
   color: #fff;
   transition: all 0.3s ease;
 }

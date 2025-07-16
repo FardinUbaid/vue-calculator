@@ -1,29 +1,42 @@
 import { defineStore } from "pinia";
 
-export const useSettingsStore = defineStore("settingsStore", {
+export const useSettingsStore = defineStore("settings", {
   state: () => ({
-    fontSize: 16,
-    themeColor: "default",
-    availableThemes: ["default", "blue", "red", "green", "purple"],
+    fontSizeLevel: 2,
+    colors: ["#1e293b", "#f59e0b", "#ec4899", "#10b981", "#6366f1"],
+    selectedColorIndex: 0,
   }),
   getters: {
-    currentFontSize() {
-      return this.fontSize + "px";
+    currentFontSize(state) {
+      return (
+        [
+          "12px",
+          "13px",
+          "14px",
+          "15px",
+          "16px",
+          "17px",
+          "18px",
+          "19px",
+          "20px",
+          "21px",
+        ][state.fontSizeLevel - 1] || "16px"
+      );
     },
-    currentTheme() {
-      return this.themeColor;
+    currentColor(state) {
+      return state.colors[state.selectedColorIndex];
     },
   },
   actions: {
-    increaseFont() {
-      this.fontSize += 1;
+    increaseFontSize() {
+      if (this.fontSizeLevel < 10) this.fontSizeLevel++;
     },
-    decreaseFont() {
-      if (this.fontSize > 10) this.fontSize -= 1;
+    decreaseFontSize() {
+      if (this.fontSizeLevel > 1) this.fontSizeLevel--;
     },
-    setTheme(color) {
-      if (this.availableThemes.includes(color)) {
-        this.themeColor = color;
+    setThemeColor(index) {
+      if (index >= 0 && index < this.colors.length) {
+        this.selectedColorIndex = index;
       }
     },
   },

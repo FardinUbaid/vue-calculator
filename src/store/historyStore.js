@@ -1,19 +1,27 @@
 import { defineStore } from "pinia";
 
-export const useHistoryStore = defineStore("historyStore", {
+export const useCalculatorStore = defineStore("calculator", {
   state: () => ({
+    currentInput: "",
+    result: "",
     history: [],
   }),
-  getters: {
-    allHistory() {
-      return this.history;
-    },
-  },
   actions: {
-    addToHistory(expression, result) {
-      this.history.unshift({ expression, result, timestamp: new Date() });
+    append(value) {
+      this.currentInput += value;
     },
-    resetHistory() {
+    clear() {
+      this.currentInput = "";
+    },
+    calculate() {
+      try {
+        this.result = eval(this.currentInput).toString();
+        this.history.unshift(`${this.currentInput} = ${this.result}`);
+      } catch (e) {
+        this.result = "Error";
+      }
+    },
+    clearHistory() {
       this.history = [];
     },
   },
