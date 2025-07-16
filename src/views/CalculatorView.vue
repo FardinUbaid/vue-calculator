@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator" :style="{ fontSize: fontSize }">
+  <div class="calculator">
     <div class="display">
       <div class="input">{{ calculator.currentInput || "0" }}</div>
       <div class="result">{{ calculator.result }}</div>
@@ -66,6 +66,7 @@ export default {
     function appendDigit(digit) {
       calculator.append(digit);
     }
+
     function appendOperator(op) {
       const lastChar = calculator.currentInput.slice(-1);
       if ("+-*/".includes(lastChar)) {
@@ -74,13 +75,16 @@ export default {
         calculator.append(op);
       }
     }
+
     function clear() {
       calculator.clear();
     }
+
     function reset() {
       calculator.clear();
       calculator.result = "";
     }
+
     function calculate() {
       calculator.calculate();
     }
@@ -96,110 +100,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.calculator {
-  max-width: 400px;
-  margin: 2rem auto;
-  background: var(--surface-alt, #333348);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 0 10px #0008;
-  color: white;
-  user-select: none;
-}
-
-.display {
-  background: var(--surface, #2a2a3d);
-  border-radius: 8px;
-  padding: 1rem;
-  font-family: "Courier New", Courier, monospace;
-  margin-bottom: 1rem;
-  min-height: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  word-break: break-word;
-}
-
-.input {
-  font-size: 1.4rem;
-  color: #ccc;
-}
-
-.result {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-  text-align: right;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.btn-row {
-  display: flex;
-  gap: 0.7rem;
-}
-
-button {
-  flex: 1;
-  background: var(--surface, #2a2a3d);
-  border: none;
-  border-radius: 6px;
-  padding: 1.2rem 0;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.25s;
-  user-select: none;
-}
-
-button:hover {
-  background: var(--surface-alt, #44445a);
-}
-
-button.operator {
-  background: #f57c00;
-  color: white;
-}
-
-button.operator:hover {
-  background: #fb8c00;
-}
-
-button.equal {
-  background: #0d47a1;
-}
-
-button.equal:hover {
-  background: #1565c0;
-}
-
-button.clear {
-  background: #b71c1c;
-}
-
-button.clear:hover {
-  background: #c62828;
-}
-
-button.reset {
-  background: #d32f2f;
-}
-
-button.reset:hover {
-  background: #e53935;
-}
-
-button.zero {
-  flex: 2;
-}
-
-.empty-space {
-  flex: 1;
-}
-</style>

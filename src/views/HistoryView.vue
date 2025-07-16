@@ -34,38 +34,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.history-view {
-  max-width: 500px;
-  margin: 2rem auto;
-  background: var(--surface-alt, #333348);
-  color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #0008;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 0.4rem;
-  border-bottom: 1px solid #555;
-}
-
-button {
-  margin-top: 1rem;
-  padding: 0.6rem 1rem;
-  border: none;
-  background: #d32f2f;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-button:hover {
-  background: #e53935;
-}
-</style>

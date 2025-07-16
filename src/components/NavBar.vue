@@ -21,23 +21,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  background-color: #2a2a3d;
-  border-bottom: 1px solid #444;
-  font-size: 2rem;
-}
-a {
-  color: gray;
-  transition: color 0.3s;
-  text-decoration: none;
-}
-a.active {
-  color: white;
-}
-</style>
