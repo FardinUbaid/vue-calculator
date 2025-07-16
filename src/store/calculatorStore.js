@@ -8,7 +8,16 @@ export const useCalculatorStore = defineStore("calculator", {
   }),
   actions: {
     append(value) {
-      this.currentInput += value;
+      if (this.currentInput === "" && this.result !== "") {
+        if ("+-*/".includes(value)) {
+          this.currentInput = this.result + value;
+          this.result = "";
+        } else {
+          this.currentInput = value;
+        }
+      } else {
+        this.currentInput += value;
+      }
     },
     clear() {
       this.currentInput = "";
@@ -17,7 +26,7 @@ export const useCalculatorStore = defineStore("calculator", {
       try {
         this.result = eval(this.currentInput).toString();
         this.history.unshift(`${this.currentInput} = ${this.result}`);
-      } catch (err) {
+      } catch (e) {
         this.result = "Error";
       }
     },
